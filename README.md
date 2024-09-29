@@ -1,38 +1,42 @@
-# Node.js JWT Authentication & Google Login
+# Chat Application API
 
-A simple and secure Node.js application for handling user authentication using JWT (JSON Web Token). This project allows users to sign up, log in, maintain sessions via JWT tokens, and authenticate via Google.
+## Overview
+This project is a RESTful API for a chat application built with Node.js, Express.js, and MongoDB. It provides backend functionality for user authentication, messaging, and friend management, making it an ideal foundation for developers looking to integrate chat features into their applications.
 
 ## Features
-- User registration with hashed passwords
-- Secure login with JWT-based authentication
-- Google authentication using OAuth 2.0
-- Token validation for protected routes
-- Error handling for failed authentication
-- Nodemailer integration for OTP or email verification
+- **User Authentication**: Secure user registration and login using JWT (JSON Web Tokens) for session management.
+- **Friend Request Management**: Users can send, accept, and manage friend requests, allowing for a network of connections.
+- **Message Handling**: Users can send and retrieve messages to/from their friends, ensuring effective communication.
+- **Chat History**: Fetch and manage historical chat data for users.
 
-## Technologies Used
-- Node.js
-- Express.js
-- MongoDB
-- JWT (JSON Web Token)
-- Nodemailer
-- Google OAuth 2.0
+## API Endpoints
+- **Authentication**
+  - `POST /api/auth/signup`: Register a new user.
+  - `POST /api/auth/login`: Log in an existing user and receive a JWT.
 
-## Setup & Installation
+- **Friend Management**
+  - `POST /api/friends/request`: Send a friend request.
+  - `GET /api/friends/requests`: Retrieve incoming friend requests.
+  - `GET /api/friends`: Get a list of friends.
 
-### 1. Clone the Repository
-```bash
-git clone https://github.com/your-username/nodejs-jwt-authentication.git
-cd nodejs-jwt-authentication
-```
+- **Messaging**
+  - `POST /api/messages/send`: Send a message to a friend.
+  - `GET /api/messages/:friendId`: Retrieve messages exchanged with a specific friend.
 
-### 2. Install Dependencies
-Make sure you have Node.js installed. Then run:
-```bash
-npm install
-```
-
-### 3. Configure Environment Variables
+## Installation
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/your-username/chat-app.git
+   ```
+2. Navigate to the project directory:
+   ```bash
+   cd chat-app
+   ```
+3. Install the dependencies:
+   ```bash
+   npm install
+   ```
+### 4. Configure Environment Variables
 Create a `.env` file in the root directory with the following variables:
 
 ```
@@ -46,27 +50,17 @@ GOOGLE_CLIENT_SECRET=<your-google-client-secret>
 GOOGLE_CALLBACK_URL=<your-google-callback-url>
 ```
 
-### 4. Start the Application
-To run the app in development mode:
-```bash
-npm run dev
-```
-The server will start on `http://localhost:8080`.
+5. Start the server:
+   ```bash
+   npm start
+   ```
 
-### 5. Test the Endpoints
-You can use Postman or a similar tool to test the following endpoints:
-- **POST /api/auth/register** – User registration
-- **POST /api/auth/login** – User login with JWT token
-- **GET /api/protected** – Access protected route with valid token
-- **GET /auth/google** – Initiates Google login flow
-- **GET /auth/google/callback** – Handles Google authentication callback
-
-### 6. Nodemailer for OTP Verification (Optional)
-To enable email-based OTP verification, configure your email service (e.g., Gmail or SMTP) in the `.env` file. The OTP will be sent when a new user registers.
+## Usage
+The API can be tested using tools like Postman or cURL. Make sure to include the JWT token in the Authorization header for protected routes.
 
 ## License
-This project is open-source and licensed under the MIT License.
+This project is licensed under the MIT License.
 
 ---
 
-This version includes the Google authentication setup alongside JWT authentication. Let me know if you need further adjustments!
+Feel free to modify any sections to better fit your project's specifics!
